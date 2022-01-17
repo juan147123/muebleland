@@ -65,10 +65,8 @@ if (isset($_GET['ruta'])) {
 <script src="views/js/ajax_productos.js"></script>
 <script src="views/js/ajax_colores.js"></script>
 <script src="views/js/ajax_marcas.js"></script>
-<<<<<<< HEAD
 <script src="views/js/ajax_categorias.js"></script>
 
-=======
 <script src="views/js/ajax_ventas.js"></script>
 <!-- registrar venta lista cliente -->
 <script>
@@ -101,6 +99,5 @@ if (isset($_GET['ruta'])) {
   });
 </script>
 <!--  -->
->>>>>>> 9b9813a30426c55bbef9b9eace8e1b20a843f418
 </body>
 </html>

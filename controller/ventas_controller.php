@@ -55,4 +55,19 @@ class ventascontrolador{
             return "error";
         }
     }
+    static public function ctrMostrarDetalleVentas_x_ID($id_venta)
+    {
+        $respuesta = ventasmodelo::mdlListarMontosDetalleVenta($id_venta);
+        return $respuesta;
+    }
+
+    static public function ctrEliminarTodoDetalleVentas_x_ID($id_dventa){
+        $respuesta = ventasmodelo::mdlEliminarTodoDetalleVenta_x_ID($id_dventa);
+        return $respuesta;
+        if ($respuesta == true) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
 }

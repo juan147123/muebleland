@@ -189,9 +189,9 @@ $('#codigprodvnt').on('change', function () {
             var inputprod = document.getElementById('descprovent');
             inputprod.value = "";
             inputcant.value = 0;
-        }else {
+        } else {
             $('#descprovent').val($data['DescripcionProd']);
-            $('#cantidadvent').attr("max",$data['Stock']);
+            $('#cantidadvent').attr("max", $data['Stock']);
             inputcant.value = 0;
         }
     });
@@ -226,9 +226,9 @@ function btnverdetalleventa(id_venta) {
                 "defaultContent": ''
             },
             { "data": 'DescripcionProd' },
-            { "data": 'PrecioVenta' },
+            { "data": 'PrecioVenta', render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') },
             { "data": 'cantidad' },
-            { "data": 'monto' },
+            { "data": 'monto', render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') },
             { "data": 'acciones' }
 
         ],
@@ -247,6 +247,7 @@ $('form#frmAddDetalleVenta').submit(function (e) {
     e.preventDefault();
     var $form = $(this);
     datos = $form.serialize();
+    $idvnt = document.getElementById('idventadet').value;
     $.ajax({
         url: "ajax/SeccionVentas/registrardetalleventa.php",
         type: "post",
@@ -256,6 +257,7 @@ $('form#frmAddDetalleVenta').submit(function (e) {
         $data = respuesta.response;
         if ($data == 'true') {
             tbldetalleventa.ajax.reload();
+            btnMostrarMonto($idvnt);
             $("#codigprodvnt").val(null).trigger('change');
             document.querySelector('#descprovent').value = '';
             document.querySelector('#cantidadvent').value = 0;
@@ -264,16 +266,16 @@ $('form#frmAddDetalleVenta').submit(function (e) {
                 '¡Error!',
                 'Nose pudo agregar el producto',
                 'info'
-            )
+            );
 
-        }else if($data == 'existen'){
+        } else if ($data == 'existen') {
             swal.fire('Aviso', 'El producto ya se encuentra en el carrito.', 'info');
         }
     });
 });
 
 function btnEliminarDetalleVenta(id_dventa) {
-
+    $idvnt = document.getElementById('idventadet').value;
     $.ajax({
         url: "ajax/SeccionVentas/eliminardetalleventa.php",
         type: "post",
@@ -283,6 +285,7 @@ function btnEliminarDetalleVenta(id_dventa) {
         $data = respuesta;
         if ($data == 'ok') {
             tbldetalleventa.ajax.reload();
+            btnMostrarMonto($idvnt)
 
         } else {
             if ($data == 'error') {
@@ -291,4 +294,83 @@ function btnEliminarDetalleVenta(id_dventa) {
             }
         }
     });
-} 
+}
+
+function btnMostrarMonto(id_venta) {
+    $.ajax({
+        url: "ajax/ListarTablasAjax/listarmontosdetalle.php",
+        type: "post",
+        data: "id_venta=" + id_venta,
+        dataType: 'json',
+    }).done(function (respuesta) {
+        $data = respuesta;
+        if ($data['subtotal'] != null && $data['igv'] != null && $data['total'] != null) {
+
+            $('#subtotaldv').val($data['subtotal']);
+            $('#igvdv').val($data['igv']);
+            $('#totaldv').val($data['total']);
+        } else {
+            $('#subtotaldv').val('0.00');
+            $('#igvdv').val('0.00');
+            $('#totaldv').val('0.00');
+        }
+    });
+}
+
+function eliminartododetalleventa() {
+    Swal.fire({
+        title: '¿Está seguro de cancelar la venta?',
+        text: "Se quitara de forma permanente!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar.',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $idvnt = document.getElementById('idventadet').value;
+            $.ajax({
+                url: "ajax/SeccionVentas/eliminartododetallevnt.php",
+                type: "post",
+                data: "id_dventa=" + $idvnt,
+                dataType: 'json',
+            }).done(function (respuesta) {
+                $data = respuesta;
+                if ($data == 'ok') {
+                    swal.fire('éxito', 'Se quitaron los productos del carrito.', 'success');
+                    tbldetalleventa.ajax.reload();
+                } else {
+                    if ($data == 'error') {
+                        swal.fire('¡Error!', 'No se puede quitar el producto', 'error');
+
+                    }
+                }
+            });
+        } else {
+            alertify.error('Canceló la operación');
+        }
+    })
+}
+
+function eliminartododetalleventa2() {
+
+    $idvnt = document.getElementById('idventadet').value;
+    $.ajax({
+        url: "ajax/SeccionVentas/eliminartododetallevnt.php",
+        type: "post",
+        data: "id_dventa=" + $idvnt,
+        dataType: 'json',
+    }).done(function (respuesta) {
+        $data = respuesta;
+        if ($data == 'ok') {
+            tbldetalleventa.ajax.reload();
+        } else {
+            if ($data == 'error') {
+                swal.fire('¡Error!', 'No se puede quitar el producto', 'error');
+
+            }
+        }
+    });
+
+}

@@ -14,7 +14,7 @@ $('form#frmRegistroCliente').submit(function (e) {
                 '¡Éxito!',
                 'El cliente fue registrado.',
                 'success'
-            )
+            );
             tblCliente.ajax.reload();
             $('form#frmRegistroCliente')[0].reset();
             $("#mdlregistrocliente").modal("hide");
@@ -111,3 +111,4 @@ function btnEliminarCliente(NIT) {
         }
     })
 }
+

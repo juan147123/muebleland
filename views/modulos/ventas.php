@@ -1,13 +1,11 @@
 <section>
-    <div class="box-header with-border">
-        <h3 class="box-title">Generar venta</h3>
-    </div>
+
     </br>
 
 
     <div>
         <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#mdlRegistrarVenta" onclick="ListarClientesVentas();">
-            <i class="fa fa-plus"></i> Nueva Venta</button>
+            <i class="fa fa-plus"></i> Nueva orden de Venta</button>
     </div>
     <br>
 
@@ -48,7 +46,7 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Registrar Venta</h5>
+                    <h5 class="modal-title" id="myModalLabel">Registrar orden de Venta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -121,8 +119,8 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Actualizar Venta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="myModalLabel">Registrar detalle de Venta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="eliminartododetalleventa2()">
                     </button>
                 </div>
                 <div class="modal-body">
@@ -208,15 +206,15 @@
                                 <div class="row preciosDVenta">
                                     <div class="col-md-6 col-xs-6">
 
-                                        <input type="text" class="form-control " id="subtotaldv" name="subtotaldv" value="0.0" disabled>
+                                        <input type="text" class="form-control " id="subtotaldv" name="subtotaldv" value="0.00" disabled>
                                     </div>
                                     <div class="col-md-6 col-xs-6">
 
-                                        <input type="text" class="form-control " id="igvdv" name="igvdv" value="0.0" disabled>
+                                        <input type="text" class="form-control " id="igvdv" name="igvdv" value="0.00" disabled>
                                     </div>
                                     <div class="col-md-6 col-xs-6">
 
-                                        <input type="text" class="form-control " id="totaldv" name="totaldv" value="0.0" disabled>
+                                        <input type="text" class="form-control " id="totaldv" name="totaldv" value="0.00" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +223,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger waves-effect" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="reset" class="btn btn-danger waves-effect" data-bs-dismiss="modal" onclick="eliminartododetalleventa();">Cancelar</button>
                     <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
                 </div>
 

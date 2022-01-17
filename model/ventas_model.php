@@ -106,4 +106,23 @@ class ventasmodelo
             return "error";
         }
     }
+    
+    public static  function mdlListarMontosDetalleVenta($id_venta)
+    {
+        $stmt = Conexion::conectar()->prepare("CALL SP_ListarMontosDVenta($id_venta)");
+        $stmt->execute();
+        $respuesta = $stmt->fetch();
+        return $respuesta;
+    }
+
+    static public function mdlEliminarTodoDetalleVenta_x_ID($id_dventa)
+    {
+        $stmt = Conexion::conectar()->prepare("CALL SP_EliminarTodoDetalleVxID($id_dventa);");
+        $stmt->execute();
+        if ($stmt = true) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
 }

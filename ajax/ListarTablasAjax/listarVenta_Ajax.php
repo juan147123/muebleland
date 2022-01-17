@@ -16,7 +16,7 @@ class listarventasajax
             }
             $response[$i]['detalle'] = '
                     <div ">
-                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnEditarMarca('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
+                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnMostrarMonto('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
                     </div>';
             $response[$i]['acciones'] = '
                     <div ">
