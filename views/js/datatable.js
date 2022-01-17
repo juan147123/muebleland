@@ -274,8 +274,11 @@ $(document).ready(function () {
                 "defaultContent": ''
             },
             { 'data': 'codigo' },
+            { 'data': 'cliente' },
             { 'data': 'responsable' },
-            { 'data': 'responsable' },
+            { 'data': 'fecha_registro' },
+            { 'data': 'estado' },
+            { 'data': 'detalle' },
             { 'data': 'acciones' }
         ],
         "order": [[1, 'asc']]

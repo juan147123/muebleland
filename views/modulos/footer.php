@@ -65,7 +65,42 @@ if (isset($_GET['ruta'])) {
 <script src="views/js/ajax_productos.js"></script>
 <script src="views/js/ajax_colores.js"></script>
 <script src="views/js/ajax_marcas.js"></script>
+<<<<<<< HEAD
 <script src="views/js/ajax_categorias.js"></script>
 
+=======
+<script src="views/js/ajax_ventas.js"></script>
+<!-- registrar venta lista cliente -->
+<script>
+  $(document).ready(function() {
+    $(".listarmodalVentaR").select2({
+      dropdownParent: $("#mdlRegistrarVenta"),
+      width:'100%'
+    });
+  });
+</script>
+<!--  -->
+<!-- actualizar venta lista cliente -->
+<script>
+  $(document).ready(function() {
+    $(".listarmodalVentaRES").select2({
+      dropdownParent: $("#mdlActualizarVenta"),
+      width:'100%'
+    });
+  });
+</script>
+<!--  -->
+<!-- actualizar venta lista cliente -->
+<script>
+  $(document).ready(function() {
+    $(".listardetallevent").select2({
+      dropdownParent: $("#mdlAddDetalleVenta"),
+      width:'100%',
+      height:'100%'
+    });
+  });
+</script>
+<!--  -->
+>>>>>>> 9b9813a30426c55bbef9b9eace8e1b20a843f418
 </body>
 </html>

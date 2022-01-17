@@ -53,7 +53,25 @@
     background-size:cover;
 
 }
+.preciosDVenta{
+    flex-direction:column;
+    font-size: 12PX;
+}
+.datosvnt{
+    margin-left: 45px;
+}
+.preciosDVenta input{
+    height: 30PX;
+    width:100px;
+}
 
+.preciosDVenta label{
+    font-weight: bold;
+    margin-top: 5px;
+}
+.columnascontenedor{
+    flex-direction:row-reverse;
+}
 #sidebar-menu ul li a{
     font-weight: bold;
 }
