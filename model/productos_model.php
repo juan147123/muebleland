@@ -12,10 +12,11 @@ class productomodelo
         return $response;
     }
 
-    static public function mdlRegistrarProducto($datos)    {
+    static public function mdlRegistrarProducto($datos)
+    {
 
         $consulta = Conexion::conectar()->prepare("SELECT * FROM producto WHERE DescripcionProd=? and CodigoCat=? and Modelo=? AND idmarca=? AND idColor=?;");
-        $consulta->execute([$datos['DescripcionProd'],$datos['CodigoCat'],$datos['Modelo'],$datos['idmarca'],$datos['idColor']]);
+        $consulta->execute([$datos['DescripcionProd'], $datos['CodigoCat'], $datos['Modelo'], $datos['idmarca'], $datos['idColor']]);
         $result = $consulta->fetch(PDO::FETCH_OBJ);
         if (!empty($result)) {
 
@@ -36,10 +37,14 @@ class productomodelo
 
     static public function mdlMostrarProducto_x_ID($id_prod)
     {
-        $stmt = Conexion::conectar()->prepare("CALL SP_MostrarProductoxId($id_prod)");
-        $stmt->execute();
-        $response = $stmt->fetch();
-        return $response;
+        if (!empty($id_prod)) {
+            $stmt = Conexion::conectar()->prepare("CALL SP_MostrarProductoxId($id_prod)");
+            $stmt->execute();
+            $response = $stmt->fetch();
+            return $response;
+        }else{
+            return 'error';
+        }
     }
 
     static public function mdlActualizarProductos($datos)

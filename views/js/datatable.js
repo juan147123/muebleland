@@ -248,6 +248,7 @@ $(document).ready(function () {
             { 'data': 'responsable' },
             { 'data': 'fecha_registro' },
             { 'data': 'estado' },
+            { 'data': 'detalle' },
             { 'data': 'acciones' }
         ],
         "order": [[1, 'asc']]

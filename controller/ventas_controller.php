@@ -7,22 +7,47 @@ class ventascontrolador{
         $respuesta = ventasmodelo::mdlListarTablaVenta();
         return $respuesta;
     }
-    static public function ctrRegistrarMarca($datos)
+    static public function ctrRegistrarVenta($datos)
     {
-        $respuesta = marcasmodelo::mdlRegistrarMarca($datos);
+        $respuesta = ventasmodelo::mdlRegistrarVenta($datos);
         return $respuesta;
     }
-    static public function ctrMostrarMarca_x_ID($id_marca)
+    static public function ctrMostrarVentas_x_ID($id_venta)
     {
-        $respuesta = marcasmodelo::mdlMostrarMarca_x_ID($id_marca);
+        $respuesta = ventasmodelo::mdlMostrarVenta_x_ID($id_venta);
         return $respuesta;
     }
-    static public function ctrActualizarMarca($datos){
-        $respuesta = marcasmodelo::mdlActualizarMarca($datos);
+    static public function ctrActualizarVenta($datos){
+        $respuesta = ventasmodelo::mdlActualizarVenta($datos);
         return $respuesta;
     }
-    static public function ctrEliminarMarca_x_ID($id_marca){
-        $respuesta = marcasmodelo::mdleliminarMarca_x_ID($id_marca);
+    static public function ctrEliminarVentas_x_ID($id_venta){
+        $respuesta = ventasmodelo::mdlEliminarVenta_x_ID($id_venta);
+        return $respuesta;
+        if ($respuesta == true) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
+    /* Detalle Venta */
+    static public function ctrMostrarcodigoProd(){
+
+        $respuesta = ventasmodelo::mdlMostrarCodigoprod();
+        return $respuesta;
+    }
+    static public function ctrListarDetalleVenta($id_venta){
+        $respuesta = ventasmodelo::mdlListarTablaDetalleVenta($id_venta);
+        return $respuesta;
+    }
+    static public function ctrRegistrarDetalleVenta($datos)
+    {
+        $respuesta = ventasmodelo::mdlRegistrarDetalleVenta($datos);
+        return $respuesta;
+    }
+
+    static public function ctrEliminarDetalleVentas_x_ID($id_dventa){
+        $respuesta = ventasmodelo::mdlEliminarDetalleVenta_x_ID($id_dventa);
         return $respuesta;
         if ($respuesta == true) {
             return "ok";

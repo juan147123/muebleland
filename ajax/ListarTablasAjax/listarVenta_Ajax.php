@@ -4,23 +4,29 @@ require_once '../../model/ventas_model.php';
 class listarventasajax
 {
 
-    public function ajaxlistarMarcas()
+    public function ajaxlistarVentas()
     {
 
         $response = ventascontrolador::ctrListarTablaventas();
 
 
         for ($i = 0; $i < count($response); $i++) {
-           
+            if($response[$i]['estado'] =='sin detalle'){
+                $response[$i]['estado']=' <div class="badge bg-pill bg-soft-info font-size-12">Sin Detalle</div>';
+            }
+            $response[$i]['detalle'] = '
+                    <div ">
+                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnEditarMarca('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
+                    </div>';
             $response[$i]['acciones'] = '
                     <div ">
-                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlActualizarMarca" onclick="btnEditarMarca('.$response[$i]['id_venta'].');"><i class="fa fa-pencil"></i></button>
-                    <button type="button" data-toggle="modal" data-target="#eliminarModal" class="btn btn-danger btn-sm m-0" onclick="btnEliminarMarca('.$response[$i]['id_venta'].');"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlActualizarVenta" onclick="ListarClientesVentasEditar();btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fa fa-pencil"></i></button>
+                    <button type="button" data-toggle="modal" data-target="#eliminarModal" class="btn btn-danger btn-sm m-0" onclick="btnEliminarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-window-close"></i></button>
                     </div>';
         }
 
         echo json_encode($response);
     }
 }
-$resp = new listarmarcasajax();
-$resp->ajaxlistarMarcas();
+$resp = new listarventasajax();
+$resp->ajaxlistarVentas();
