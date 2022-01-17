@@ -61,6 +61,13 @@ class colormodelo
 
     static public function mdlEliminarColor_x_ID($id_color)
     {
+        $stmt = Conexion::conectar()->prepare("CALL SP_ValEliminarColorxID($id_color);");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        if(!empty($result)){
+            return "existen";
+        }
         $stmt = Conexion::conectar()->prepare("CALL SP_EliminarColorxID($id_color);");
         $stmt->execute();
         if ($stmt = true) {

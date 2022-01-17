@@ -10,6 +10,7 @@ require_once 'controller/productos_controller.php';
 require_once 'controller/colores_controller.php';
 require_once 'controller/marcas_controller.php';
 require_once 'controller/ventas_controller.php';
+require_once 'controller/categorias_controller.php';
 //aqui se implementan los modelos
 require_once 'model/empleado_model.php';
 require_once 'model/proveedor_model.php';
@@ -19,6 +20,7 @@ require_once 'model/productos_model.php';
 require_once 'model/colores_model.php';
 require_once 'model/marcas_model.php';
 require_once 'model/ventas_model.php';
+require_once 'model/categorias_model.php';
 
 $plantilla = new ControllerPlantilla();
 $plantilla->ctrPlantilla();

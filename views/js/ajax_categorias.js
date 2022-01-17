@@ -1,9 +1,9 @@
-$('form#frmRegistroMarca').submit(function (e) {
+$('form#frmRegistroCategoria').submit(function (e) {
     e.preventDefault();
     var $form = $(this);
     datos = $form.serialize();
     $.ajax({
-        url: "ajax/SeccionMarcas/registrarmarcas.php",
+        url: "ajax/SeccionCategorias/registrarcategorias.php",
         type: "post",
         data: datos,
         dataType: 'json',
@@ -12,42 +12,42 @@ $('form#frmRegistroMarca').submit(function (e) {
         if ($data == 'true') {
             Swal.fire(
                 '¡Éxito!',
-                'La marca fue registrada',
+                'La categoria fue registrada',
                 'success'
             )
-            tblMarcas.ajax.reload();
-            $('form#frmRegistroMarca')[0].reset();
-            $("#mdlRegistrarMarca").modal("hide");
+            tblCategorias.ajax.reload();
+            $('form#frmRegistroCategoria')[0].reset();
+            $("#mdlRegistrarCategoria").modal("hide");
         } else if ($data == 'repeat') {
             Swal.fire(
                 '¡Error!',
-                'La marca ya se encuentra registrada',
+                'La categoria ya se encuentra registrada',
                 'info'
             )
 
         }
     });
 });
-
-function btnEditarMarca(id_marca) {
+function btnEditarCategoria(CodigoCat) {
     $.ajax({
         url: "ajax/AjaxMostrar/mostrar_Ajax.php",
         type: "post",
-        data: "id_marca=" + id_marca,
+        data: "CodigoCat=" + CodigoCat,
         dataType: 'json',
     }).done(function (respuesta) {
         $data = respuesta;
-        $('#id_marcaEditar').val($data['id_marca']);
-        $('#descripcionEditar').val($data['descripcion']);
+        console.log($data);
+        $('#CodigoCatEditar').val($data['CodigoCat']);
+        $('#DescripcionEditar').val($data['Descripcion']);
     });
 }
 
-$('form#frmActualizarMarca').submit(function (e) {
+$('form#frmActualizarCategoria').submit(function (e) {
     e.preventDefault();
     var $form = $(this);
     datos = $form.serialize();
     $.ajax({
-        url: "ajax/SeccionMarcas/actualizarmarcas.php",
+        url: "ajax/SeccionCategorias/actualizarcategorias.php",
         type: "post",
         data: datos,
         dataType: 'json',
@@ -59,8 +59,8 @@ $('form#frmActualizarMarca').submit(function (e) {
                 'Datos actualizados.',
                 'success'
             )
-            tblMarcas.ajax.reload(null, false);
-            $("#mdlActualizarMarca").modal("hide");
+            tblCategorias.ajax.reload(null, false);
+            $("#mdlActualizarCategoria").modal("hide");
         } else if ($data == 'error') {
             Swal.fire(
                 'Upps!',
@@ -71,10 +71,10 @@ $('form#frmActualizarMarca').submit(function (e) {
     });
 });
 
-function btnEliminarMarca(id_marca) {
+function btnEliminarCategoria(CodigoCat) {
     Swal.fire({
         title: '¿Estás seguro en eliminar?',
-        text: "Se quitara de forma permanente a la marca!",
+        text: "Se quitara de forma permanente a la categoria!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -84,22 +84,22 @@ function btnEliminarMarca(id_marca) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "ajax/SeccionMarcas/eliminarmarcas.php",
+                url: "ajax/SeccionCategorias/eliminarcategorias.php",
                 type: "post",
-                data: "id_marca=" + id_marca,
+                data: "CodigoCat=" + CodigoCat,
                 dataType: 'json',
             }).done(function (respuesta) {
                 $data = respuesta;
                 if ($data == 'ok') {
-                    swal.fire('¡Éxito!', 'Se ha Eliminado la marca.', 'success');
-                    tblMarcas.ajax.reload();
+                    swal.fire('¡Éxito!', 'Se ha Eliminado la categoria.', 'success');
+                    tblCategorias.ajax.reload();
 
                 }else if($data=='existen'){
-                    swal.fire('¡Error!', 'Esta marca ya cuenta con producto registrado.', 'warning');
+                    swal.fire('¡Error!', 'Esta categoria ya cuenta con producto registrado.', 'warning');
 
                 } else {
                     if ($data == 'error') {
-                        swal.fire('¡Error!', 'No Se ha Eliminado la marca', 'danger');
+                        swal.fire('¡Error!', 'No Se ha Eliminado la categoria', 'danger');
 
                     }
                 }

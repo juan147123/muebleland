@@ -65,6 +65,7 @@ if (isset($_GET['ruta'])) {
 <script src="views/js/ajax_productos.js"></script>
 <script src="views/js/ajax_colores.js"></script>
 <script src="views/js/ajax_marcas.js"></script>
+<script src="views/js/ajax_categorias.js"></script>
 
 </body>
 </html>

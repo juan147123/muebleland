@@ -62,6 +62,13 @@ class marcasmodelo
 
     static public function mdlEliminarMarca_x_ID($id_marca)
     {
+        $stmt = Conexion::conectar()->prepare("CALL SP_ValEliminarMarcaxID($id_marca);");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        if(!empty($result)){
+            return "existen";
+        }
         $stmt = Conexion::conectar()->prepare("CALL SP_EliminarMarcaxID($id_marca);");
         $stmt->execute();
         if ($stmt = true) {

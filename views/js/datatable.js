@@ -223,6 +223,36 @@ $(document).ready(function () {
         });
     }).draw();
 
+    tblCategorias = $('#ListarCategoria').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listarcategorias.Ajax.php",
+            dataSrc: ''
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 },
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { 'data': 'Descripcion' },
+            { 'data': 'acciones' }
+        ],
+        "order": [[1, 'asc']]
+    });
+    tblCategorias.on('order.dt search.dt', function () {
+        tblCategorias.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
 
     tblVentas = $('#Listarventas').DataTable({
         language: {

@@ -94,6 +94,9 @@ function btnEliminarColor(id_color) {
                     swal.fire('¡Éxito!', 'Se ha Eliminado el color..', 'success');
                     tblColores.ajax.reload();
 
+                }else if($data=='existen'){
+                    swal.fire('¡Error!', 'Este color ya cuenta con producto registrado.', 'warning');
+
                 } else {
                     if ($data == 'error') {
                         swal.fire('¡Error!', 'No Se ha Eliminado el color.', 'danger');

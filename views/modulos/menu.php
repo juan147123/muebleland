@@ -83,6 +83,7 @@
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="colores">Colores</a></li>
                         <li><a href="marcas">Marcas</a></li>
+                        <li><a href="categorias">Categorias</a></li>
                         <li><a href="productos">Productos</a></li>
                     </ul>
 

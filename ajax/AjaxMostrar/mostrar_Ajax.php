@@ -5,6 +5,7 @@ require_once '../../controller/cliente_controller.php';
 require_once '../../controller/productos_controller.php';
 require_once '../../controller/colores_controller.php';
 require_once '../../controller/marcas_controller.php';
+require_once '../../controller/categorias_controller.php';
 
 
 require_once '../../model/empleado_model.php';
@@ -13,6 +14,7 @@ require_once '../../model/cliente_model.php';
 require_once '../../model/productos_model.php';
 require_once '../../model/colores_model.php';
 require_once '../../model/marcas_model.php';
+require_once '../../model/categorias_model.php';
 
 
 class mostrarporidajax
@@ -53,6 +55,12 @@ class mostrarporidajax
         $response = marcascontrolador::ctrMostrarMarca_x_ID($id_marca);
         echo json_encode($response);
     }
+    public function ajaxMostrarCategoriasPorID()
+    {
+        $CodigoCat = $this->CodigoCat;
+        $response = categoriascontrolador::ctrMostrarCategoria_x_ID($CodigoCat);
+        echo json_encode($response);
+    }
 }
 
 if (isset($_POST["id_trabajador"])) {
@@ -84,4 +92,9 @@ if (isset($_POST["id_marca"])) {
     $id_marca = new mostrarporidajax();
     $id_marca->id_marca = $_POST["id_marca"];
     $id_marca->ajaxMostrarMarcasPorID();
+}
+if (isset($_POST["CodigoCat"])) {
+    $CodigoCat = new mostrarporidajax();
+    $CodigoCat->CodigoCat = $_POST["CodigoCat"];
+    $CodigoCat->ajaxMostrarCategoriasPorID();
 }

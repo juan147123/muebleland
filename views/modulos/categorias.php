@@ -1,6 +1,6 @@
 <section class="content container-fluid">
 <div class="box-header with-border">
-        <h3 class="box-title">Lista de marcas</h3>
+        <h3 class="box-title">Lista de categorias</h3>
     </div>
     </br>
 
@@ -8,7 +8,7 @@
 
 
 <div>
-        <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#mdlRegistrarMarca">
+        <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#mdlRegistrarCategoria">
             <i class="fa fa-plus"></i> Registrar</button>
     </div>
     <br>
@@ -16,11 +16,11 @@
     <div class="box">
         <div class="container-fluid" style="margin-top: 5px">
             <div class="box-header with-border">
-                <h3 class="box-title">Listado de Marca</h3>
+                <h3 class="box-title">Listado de Categorias</h3>
             </div>
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table text-center table-bordered table-light" id="ListarMarca" width="100%" cellspacing="0">
+                    <table class="table text-center table-bordered table-light" id="ListarCategoria" width="100%" cellspacing="0">
                         <thead class=" thead-dark">
                             <tr>
                                 <th>#</th>
@@ -41,23 +41,23 @@
 </section>
 
 <section>
-    <div id="mdlRegistrarMarca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="mdlRegistrarCategoria" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Registrar Marca</h5>
+                    <h5 class="modal-title" id="myModalLabel">Registrar Categoria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
-                <form class="form" id="frmRegistroMarca" method="post" action="ajax/SeccionMarcas/registrarmarcas.php">
+                <form class="form" id="frmRegistroCategoria" method="post" action="ajax/SeccionCategorias/registrarcategorias.php">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <div class="input-group">
-                                    <label>Nombre de la marca:</label>
+                                    <label>Nombre de la categoria:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" required>
+                                    <input type="text" class="form-control AutofocusInput" id="Descripcion" name="Descripcion" placeholder="Ingrese descripcion" required>
                                 </div>
                             </div>
                             
@@ -75,24 +75,24 @@
 </section>
 
 <section>
-    <div id="mdlActualizarMarca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="mdlActualizarCategoria" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Actualizar Marca</h5>
+                    <h5 class="modal-title" id="myModalLabel">Actualizar Categoria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
-                <form class="form" id="frmActualizarMarca" method="post" >
+                <form class="form" id="frmActualizarCategoria" method="post" >
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <div class="input-group">
-                                    <label>Nombre de la Marca:</label>
+                                    <label>Nombre de la Categoria:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="descripcionEditar" name="descripcionEditar" placeholder="Ingrese descripcion" required>
-                                    <input type="hidden" class="form-control AutofocusInput" id="id_marcaEditar" name="id_marcaEditar" placeholder="Ingrese id" required>
+                                    <input type="text" class="form-control AutofocusInput" id="DescripcionEditar" name="DescripcionEditar" placeholder="Ingrese descripcion" required>
+                                    <input type="text" class="form-control AutofocusInput" id="CodigoCatEditar" name="CodigoCatEditar" placeholder="Ingrese id" required>
                                 </div>
                             </div>
                             
