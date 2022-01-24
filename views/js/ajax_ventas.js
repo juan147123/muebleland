@@ -82,6 +82,28 @@ function btnMostrarVenta(id_venta) {
         $('#id_clienteE').val($data['id_cliente']);
         document.querySelector('#select2-id_clienteE-container').innerHTML = $data['cliente'];
         $('#idventadet').val($data['id_venta']);
+        var $idcli = new String($data['id_cliente']).length;
+        var selector = document.getElementById("tipocompro");
+        var tipocomp = $data['tipo_compro'];
+        if ($idcli == 8) {
+            selector.remove(Option[0]);
+            selector.remove(Option[1]);
+            selector.remove(Option[2]);
+            selector.options[0] = new Option('Boleta', 'Boleta');
+        } else {
+            if (tipocomp == "") {
+
+                selector.remove(Option[0]);
+                selector.remove(Option[1]);
+                selector.remove(Option[2]);
+                selector.options[0] = new Option('Seleccione', '');
+                selector.options[1] = new Option('Boleta', 'Boleta');
+                selector.options[2] = new Option('Factura', 'Factura');
+            } else {
+                $('#tipocompro').val($data['tipo_compro']);
+                document.querySelector('#select2-tipocompro-container').innerHTML = $data['tipo_compro'];
+            }
+        }
 
     });
 }
@@ -240,7 +262,6 @@ function btnverdetalleventa(id_venta) {
             cell.innerHTML = i + 1;
         });
     }).draw();
-
 }
 
 $('form#frmAddDetalleVenta').submit(function (e) {
@@ -319,8 +340,8 @@ function btnMostrarMonto(id_venta) {
 
 function eliminartododetalleventa() {
     Swal.fire({
-        title: '¿Está seguro de cancelar la venta?',
-        text: "Se quitara de forma permanente!",
+        title: '¿Está seguro de cancelar la orden?',
+        text: "Se quitaran los productos de forma permanente!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -336,10 +357,13 @@ function eliminartododetalleventa() {
                 data: "id_dventa=" + $idvnt,
                 dataType: 'json',
             }).done(function (respuesta) {
-                $data = respuesta;
-                if ($data == 'ok') {
+                $data = respuesta.response;
+                if ($data == 'true') {
                     swal.fire('éxito', 'Se quitaron los productos del carrito.', 'success');
                     tbldetalleventa.ajax.reload();
+                    tblVentas.ajax.reload();
+                } else if ($data == 'vacio') {
+                    swal.fire('éxito', 'El carrito no contenia productos.', 'success');
                 } else {
                     if ($data == 'error') {
                         swal.fire('¡Error!', 'No se puede quitar el producto', 'error');
@@ -353,24 +377,168 @@ function eliminartododetalleventa() {
     })
 }
 
-function eliminartododetalleventa2() {
+
+
+function actualizarestadoventaCD() {
 
     $idvnt = document.getElementById('idventadet').value;
+
+    Swal.fire({
+        title: '¿Está seguro de agregar el detalle?',
+        text: "los datos seran almacenados!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, generar.',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $idvnt = document.getElementById('idventadet').value;
+            $.ajax({
+                url: "ajax/SeccionVentas/actualizarestadocd.php",
+                type: "post",
+                data: "id_dventa=" + $idvnt,
+                dataType: 'json',
+            }).done(function (respuesta) {
+                $data = respuesta.response;
+                if ($data == 'true') {
+                    $("#mdlAddDetalleVenta").modal("hide");
+                    swal.fire('¡Éxito!', 'Se agregaron productos a la orden de venta', 'success');
+                    tblVentas.ajax.reload();
+                } else if ($data == 'vacio') {
+                    swal.fire('¡Upss!', 'Debe agregar productos a la orden de venta', 'info');
+                } else {
+                    if ($data == 'error') {
+                        swal.fire('¡Error!', 'No se puede generar la orden de venta', 'error');
+
+                    }
+                }
+            });
+
+        } else {
+            alertify.error('Canceló la operación');
+        }
+    })
+
+}
+
+
+function actualizartipocomproentaCD() {
+    $idvnt = document.getElementById('idventadet').value;
+    $selectcompro = document.getElementById('tipocompro').value;
     $.ajax({
-        url: "ajax/SeccionVentas/eliminartododetallevnt.php",
+        url: "ajax/SeccionVentas/actualizartipocomp.php",
         type: "post",
-        data: "id_dventa=" + $idvnt,
+        data: {
+            tipocompro: $selectcompro,
+            idventadet: $idvnt
+        },
+    })
+}
+
+
+function actualizarestadovendido(idventa) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/SeccionVentas/Nubefactfact.php",
+        data: "idventanub=" + idventa,
+        dataType: 'json',
+        success: (e) => {
+            if (e.errors) {
+                Swal.fire("Ocurrió un error!", e.errors + "\n <br> Código: " + e.codigo, "error");
+            } else if (e.info) {                
+                actualizarestadovendidoFACT(idventa);
+            } else {
+                actualizarestadovendidoFACT(idventa);
+
+            }
+        },
+    })
+
+} 
+function actualizarestadovendidoFACT(idventa) {
+    $.ajax({
+        url: "ajax/SeccionVentas/actualizarestadovendido.php",
+        type: "post",
+        data: "id_venta=" + idventa,
         dataType: 'json',
     }).done(function (respuesta) {
-        $data = respuesta;
-        if ($data == 'ok') {
-            tbldetalleventa.ajax.reload();
-        } else {
+        $data = respuesta.response;
+        if ($data == 'true') {
+            swal.fire('¡Éxito!', 'Se generó de venta', 'success');
+            tblVentas.ajax.reload();
+        }else {
             if ($data == 'error') {
-                swal.fire('¡Error!', 'No se puede quitar el producto', 'error');
-
+                swal.fire('¡Error!', 'No se puedo generar la venta', 'error');
             }
         }
     });
 
+} 
+
+/* listar detalle de venta efectuada */
+
+function btnverdetalleventaEfectuada(id_venta) {
+    $('#ListarDetalleventaEfectuada').DataTable().clear();
+    $('#ListarDetalleventaEfectuada').DataTable().destroy();
+    tbldetalleventaEfectuada = $('#ListarDetalleventaEfectuada').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listarDetalleVenta.php",
+            type: "POST",
+            data: {
+                id_venta: id_venta,
+            },
+            dataSrc: ''
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 },
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { "data": 'DescripcionProd' },
+            { "data": 'PrecioVenta', render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') },
+            { "data": 'cantidad' },
+            { "data": 'monto', render: $.fn.dataTable.render.number(',', '.', 2, 'S/ ') }
+
+        ],
+
+
+    });
+    tbldetalleventaEfectuada.on('order.dt search.dt', function () {
+        tbldetalleventaEfectuada.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+}
+
+
+function btnMostrarMontoVEfectuada(id_venta) {
+    $.ajax({
+        url: "ajax/ListarTablasAjax/listarmontosdetalle.php",
+        type: "post",
+        data: "id_venta=" + id_venta,
+        dataType: 'json',
+    }).done(function (respuesta) {
+        $data = respuesta;
+        if ($data['subtotal'] != null && $data['igv'] != null && $data['total'] != null) {
+
+            $('#subtotaldvE').val($data['subtotal']);
+            $('#igvdvE').val($data['igv']);
+            $('#totaldvE').val($data['total']);
+        } else {
+            $('#subtotaldvE').val('0.00');
+            $('#igvdvE').val('0.00');
+            $('#totaldvE').val('0.00');
+        }
+    });
 }

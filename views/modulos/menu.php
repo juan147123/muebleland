@@ -91,7 +91,8 @@
                 <li>
                     <a class="fas fa-cart-arrow-down"> <span>Salidas</span></a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="ventas">Ventas</a></li>
+                        <li><a href="ordenventa">Orden de venta</a></li>
+                        <li><a href="venta">Ventas</a></li>
                     </ul>
 
                 </li>

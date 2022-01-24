@@ -276,7 +276,6 @@ $(document).ready(function () {
             { 'data': 'codigo' },
             { 'data': 'cliente' },
             { 'data': 'responsable' },
-            { 'data': 'fecha_registro' },
             { 'data': 'estado' },
             { 'data': 'detalle' },
             { 'data': 'acciones' }
@@ -285,6 +284,42 @@ $(document).ready(function () {
     });
     tblVentas.on('order.dt search.dt', function () {
         tblVentas.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
+
+    tblVentasEfectuadas = $('#ListarventasEfectuadas').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listarventasefectuadas.php",
+            dataSrc: ''
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 },
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { 'data': 'codigo' },
+            { 'data': 'cliente' },
+            { 'data': 'responsable' },
+            { 'data': 'fecha_registro' },
+            { 'data': 'tipo_compro' },
+            { 'data': 'ver' },
+            { 'data': 'imprimir' }
+        ],
+        "order": [[1, 'asc']]
+    });
+    tblVentasEfectuadas.on('order.dt search.dt', function () {
+        tblVentasEfectuadas.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
         });
     }).draw();

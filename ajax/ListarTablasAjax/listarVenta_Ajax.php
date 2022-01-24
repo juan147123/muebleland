@@ -8,16 +8,25 @@ class listarventasajax
     {
 
         $response = ventascontrolador::ctrListarTablaventas();
-
-
         for ($i = 0; $i < count($response); $i++) {
+            $respuesta2 = ventascontrolador::ctrListarDetalleVenta($response[$i]['id_venta']);
             if($response[$i]['estado'] =='sin detalle'){
-                $response[$i]['estado']=' <div class="badge bg-pill bg-soft-info font-size-12">Sin Detalle</div>';
+                $response[$i]['estado']=' <div class="badge bg-pill bg-soft-danger font-size-12">Sin Productos</div>';
+
+            }else if($response[$i]['estado'] =='con detalle'){
+                $response[$i]['estado']=' <div class="badge bg-pill bg-soft-info font-size-12">Con Productos</div>';
+                $response[$i]['detalle'] = '
+                <div >
+                <button type="button" class="btn btn-success btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnMostrarMonto('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
+                <button type="button" class="btn btn-success btn-sm m-0" data-bs-toggle="modal" data-bs-target="#" onclick="actualizarestadovendido('.$response[$i]['id_venta'].');"><i class="fas fa-cash-register"> vender</i></button>
+                </div>';
             }
-            $response[$i]['detalle'] = '
-                    <div ">
-                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnMostrarMonto('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
-                    </div>';
+            if(empty($respuesta2)){
+                $response[$i]['detalle'] = '
+                        <div style="text-align:center">
+                        <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnMostrarMonto('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
+                        </div>';
+            }
             $response[$i]['acciones'] = '
                     <div ">
                     <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlActualizarVenta" onclick="ListarClientesVentasEditar();btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fa fa-pencil"></i></button>

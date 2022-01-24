@@ -64,10 +64,35 @@ class ventascontrolador{
     static public function ctrEliminarTodoDetalleVentas_x_ID($id_dventa){
         $respuesta = ventasmodelo::mdlEliminarTodoDetalleVenta_x_ID($id_dventa);
         return $respuesta;
-        if ($respuesta == true) {
-            return "ok";
-        } else {
-            return "error";
-        }
     }
+    static public function ctrActualizarEstadoVentaCD($id_venta){
+        $respuesta = ventasmodelo::mdlActualizarEstadoVentaConDetalle($id_venta);
+        return $respuesta;
+    }
+    static public function ctrActualizarTipoCompro($datos){
+        $respuesta = ventasmodelo::mdlActualizarEstadoTipoCompro($datos);
+        return $respuesta;
+    }
+    static public function ctrActualizarEstadoVendido($id_venta){
+        $respuesta = ventasmodelo::mdlActualizarEstadoVentaVendido($id_venta);
+        return $respuesta;
+    }
+    static public function ctrListarTablaventasEfectuadas(){
+
+        $respuesta = ventasmodelo::mdlListarTablaVentaEfectuada();
+        return $respuesta;
+    }
+    public static function ctrfacturacionNubefact($id_venta)
+    {
+        return ventasmodelo::mbslfacturacionnubefact($id_venta);
+    }
+    public static function ctrfacturacionNubefactdatoscliente($id_venta)
+    {
+        return ventasmodelo::mdlfacturaciondatoscliente($id_venta);
+    }
+    public static function ctrActivateBillStateafterValidateResponse($id_venta, $urlpdf)
+    {
+        return ventasmodelo::mdlActivateBillStateafterValidateResponse($id_venta, $urlpdf);
+    }
+
 }

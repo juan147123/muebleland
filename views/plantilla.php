@@ -14,7 +14,8 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 			$_GET['ruta'] == "productos"||
 			$_GET['ruta'] == "marcas" ||
 			$_GET['ruta'] == "categorias" ||
-			$_GET['ruta'] == "ventas" ||
+			$_GET['ruta'] == "ordenventa" ||
+			$_GET['ruta'] == "venta" ||
 			$_GET['ruta'] == "salir" 
 		) {
 			require_once 'views/modulos/header.php';

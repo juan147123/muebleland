@@ -22,7 +22,6 @@
                                 <th>Código</th>
                                 <th>Cliente</th>
                                 <th>Responsable</th>
-                                <th>Emitido</th>
                                 <th>Estado</th>
                                 <th>Detalle</th>
                                 <th>Acciones</th>
@@ -120,7 +119,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">Registrar detalle de Venta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="eliminartododetalleventa2()">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="">
                     </button>
                 </div>
                 <div class="modal-body">
@@ -161,6 +160,17 @@
                                     </div>
                                 </div>
                             </form>
+                            <div class="row" style='margin-top:10px;'>
+                                <div class="col-md-3 col-xs-12">
+                                    <div class="input-group" style='margin-bottom:-5px;'>
+                                        <label>Tipo de Comprobante:</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <select  class="form-control " id="tipocompro" name="tipocompro"  required>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <div class="row">
@@ -224,7 +234,7 @@
 
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-danger waves-effect" data-bs-dismiss="modal" onclick="eliminartododetalleventa();">Cancelar</button>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="actualizarestadoventaCD();actualizartipocomproentaCD();">Guardar</button>
                 </div>
 
             </div><!-- /.modal-content -->
