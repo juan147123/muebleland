@@ -66,6 +66,8 @@ if (isset($_GET['ruta'])) {
 <script src="views/js/ajax_colores.js"></script>
 <script src="views/js/ajax_marcas.js"></script>
 <script src="views/js/ajax_categorias.js"></script>
+<script src="views/js/ajax_factura_compra.js"></script>
+<script src="views/js/ajax_detalle_factura_compra.js"></script>
 
 <script src="views/js/ajax_ventas.js"></script>
 <!-- registrar venta lista cliente -->

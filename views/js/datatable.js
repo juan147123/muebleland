@@ -323,6 +323,137 @@ $(document).ready(function () {
             cell.innerHTML = i + 1;
         });
     }).draw();
-
+    tblFacturaCompra = $('#ListarFacturaCompra').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listar_facturacompra.Ajax.php",
+            dataSrc: ''
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { 'data': 'NombreProveedor' },
+            { 'data': 'tipo_comp' },
+            { 'data': 'codigofac' },
+            { 'data': 'fechaemision' },
+            { 'data': 'fechavencimiento' },
+            { 'data': 'cod_orcompra' },
+            { 'data': 'condicion_pago' },
+            { 'data': 'imagen' },
+            { 'data': 'estado_fac' },
+            { 'data': 'detalle_fac' },
+            { 'data': 'acciones' }
+        ],
+        "order": false
+    });
+    tblFacturaCompra.on('order.dt search.dt', function () {
+        tblFacturaCompra.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
 
 });
+function btnverdetallefacturaCompra(id) {
+    btnMostraridfacturaalmacenado(id)
+    $('#tbldetallefacturadoCompraadd').DataTable().clear();
+    $('#tbldetallefacturadoCompraadd').DataTable().destroy();
+    tblDetalleFacturadoCompra = $('#tbldetallefacturadoCompraadd').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listar_detalle_factura_compra.php",
+            type: "post",
+            data: {
+                id: id,
+            },
+            dataSrc: '',
+            dataType: 'json',
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { 'data': 'DescripcionProd' },
+            { 'data': 'nombre_color' },
+            { 'data': 'descripcion' },
+            { 'data': 'precio_uni' },
+            { 'data': 'cantidad' },
+            { 'data': 'total', render: rendersoles },
+            { 'data': 'acciones' }
+
+        ],
+        "order": [[1, 'asc']]
+    });
+    tblDetalleFacturadoCompra.on('order.dt search.dt', function () {
+        tblDetalleFacturadoCompra.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
+}
+
+function btnverdetallefacturaCompra2(id) {
+    btnMostraridfacturaalmacenado(id)
+    $('#tbldetallefacturadoCompra').DataTable().clear();
+    $('#tbldetallefacturadoCompra').DataTable().destroy();
+    tblDetalleFacturadoCompra2 = $('#tbldetallefacturadoCompra').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listar_detalle_factura_compra.php",
+            type: "post",
+            data: {
+                id: id,
+            },
+            dataSrc: '',
+            dataType: 'json',
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { 'data': 'DescripcionProd' },
+            { 'data': 'nombre_color' },
+            { 'data': 'descripcion' },
+            { 'data': 'precio_uni' },
+            { 'data': 'cantidad' },
+            { 'data': 'total', render: rendersoles },
+            { 'data': 'estado' },
+            { 'data': 'acciones2' }
+
+        ],
+        "order": [[1, 'asc']]
+    });
+    tblDetalleFacturadoCompra2.on('order.dt search.dt', function () {
+        tblDetalleFacturadoCompra2.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
+}
