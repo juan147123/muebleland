@@ -1,6 +1,6 @@
 <section class="content container-fluid">
     <div class="box-header with-border">
-        <h3 class="box-title">Facturas de Compra</h3>git 
+        <h3 class="box-title">Facturas de Compra</h3>
     </div>
     </br>
     <div>

@@ -98,6 +98,14 @@
                         </ul>
 
                     </li>
+                    <li>
+                        <a class="fas fa-cart-arrow-down"> <span>Entradas</span></a>
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="facturacompra">Factura de Compra</a></li>
+                        </ul>
+
+                    </li>
+
                 </ul>
             </div>
             <!-- Sidebar -->
