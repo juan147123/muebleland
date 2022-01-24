@@ -45,59 +45,107 @@
     </div>
 </header>
 <!-- ========== Left Sidebar Start ========== -->
-<div class="vertical-menu">
-    <!-- LOGO -->
-    <div class="navbar-brand-box">
-        <a href="inicio" class="logo logo-dark"> <span class="logo-sm">
-                <img src="views/images/logo-sm.png" alt="" height="22">
-            </span> <span class="logo-lg">
-                <img src="views/images/mueblelandinicio.png" alt="" height="20">
-            </span> </a>
-        <a href="inicio" class="logo logo-light"> <span class="logo-sm">
-                <img src="views/images/logo-sm.png" alt="" height="22">
-            </span> <span class="logo-lg">
-                <img src="views/images/logo-light.png" alt="" height="20">
-            </span> </a>
-    </div>
-    <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn"> <i class="fa fa-fw fa-bars"></i> </button>
-    <div data-simplebar class="sidebar-menu-scroll">
-        <!--- Sidemenu -->
-        <div id="sidebar-menu">
-            <!-- Left Menu Start -->
-            <ul class="metismenu list-unstyled" id="side-menu">
-                <li>
-                    <a href="inicio"> <i class="fas fa-home"></i> </span> <span>Inicio</span> </a>
-                </li>
-                <li>
-                    <a href="empleados"> <i class="fas fa-users-cog"></i><span>Empleados</span> </a>
-                </li>
-                <li>
-                    <a href="proveedor"> <i class="fas fa-parachute-box"></i><span>Proveedores</span> </a>
-                </li>
-                <li>
-                    <a href="clientes"> <i class="fas fa-users"></i><span>Clientes</span> </a>
-                </li>
-                <li>
-                    <a class="fa fa-warehouse"> <span>Almacén</span></a>
 
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="colores">Colores</a></li>
-                        <li><a href="marcas">Marcas</a></li>
-                        <li><a href="categorias">Categorias</a></li>
-                        <li><a href="productos">Productos</a></li>
-                    </ul>
-
-                </li>
-                <li>
-                    <a class="fas fa-cart-arrow-down"> <span>Salidas</span></a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="ordenventa">Orden de venta</a></li>
-                        <li><a href="venta">Ventas</a></li>
-                    </ul>
-
-                </li>
-            </ul>
+<?php if ($_SESSION['descripcion'] == "administrador") { ?>
+    <div class="vertical-menu">
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+            <a href="inicio" class="logo logo-dark"> <span class="logo-sm">
+                    <img src="views/images/logo-sm.png" alt="" height="22">
+                </span> <span class="logo-lg">
+                    <img src="views/images/mueblelandinicio.png" alt="" height="20">
+                </span> </a>
+            <a href="inicio" class="logo logo-light"> <span class="logo-sm">
+                    <img src="views/images/logo-sm.png" alt="" height="22">
+                </span> <span class="logo-lg">
+                    <img src="views/images/logo-light.png" alt="" height="20">
+                </span> </a>
         </div>
-        <!-- Sidebar -->
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn"> <i class="fa fa-fw fa-bars"></i> </button>
+        <div data-simplebar class="sidebar-menu-scroll">
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li>
+                        <a href="inicio"> <i class="fas fa-home"></i> </span> <span>Inicio</span> </a>
+                    </li>
+                    <li>
+                        <a href="empleados"> <i class="fas fa-users-cog"></i><span>Empleados</span> </a>
+                    </li>
+                    <li>
+                        <a href="proveedor"> <i class="fas fa-parachute-box"></i><span>Proveedores</span> </a>
+                    </li>
+                    <li>
+                        <a href="clientes"> <i class="fas fa-users"></i><span>Clientes</span> </a>
+                    </li>
+                    <li>
+                        <a class="fa fa-warehouse"> <span>Almacén</span></a>
+
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="colores">Colores</a></li>
+                            <li><a href="marcas">Marcas</a></li>
+                            <li><a href="categorias">Categorias</a></li>
+                            <li><a href="productos">Productos</a></li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a class="fas fa-cart-arrow-down"> <span>Salidas</span></a>
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="ordenventa">Orden de venta</a></li>
+                            <li><a href="venta">Ventas</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
     </div>
-</div>
+<?php } ?>
+
+<?php if ($_SESSION['descripcion'] == "ventas") { ?>
+    <div class="vertical-menu">
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+            <a href="inicio" class="logo logo-dark"> <span class="logo-sm">
+                    <img src="views/images/logo-sm.png" alt="" height="22">
+                </span> <span class="logo-lg">
+                    <img src="views/images/mueblelandinicio.png" alt="" height="20">
+                </span> </a>
+            <a href="inicio" class="logo logo-light"> <span class="logo-sm">
+                    <img src="views/images/logo-sm.png" alt="" height="22">
+                </span> <span class="logo-lg">
+                    <img src="views/images/logo-light.png" alt="" height="20">
+                </span> </a>
+        </div>
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn"> <i class="fa fa-fw fa-bars"></i> </button>
+        <div data-simplebar class="sidebar-menu-scroll">
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li>
+                        <a href="clientes"> <i class="fas fa-users"></i><span>Clientes</span> </a>
+                    </li>
+                    <li>
+                        <a class="fa fa-warehouse"> <span>Almacén</span></a>
+
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="productos">Productos</a></li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="ordenventa"> <i class="fas fa-cash-register"></i><span>Orden de venta</span> </a>
+                    </li>
+                    <li>
+                        <a href="venta"> <i class="fas fa-money-bill-wave"></i><span>Ventas efectuadas</span> </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+    </div>
+<?php } ?>

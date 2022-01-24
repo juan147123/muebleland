@@ -4,11 +4,12 @@
     </div>
     </br>
 
-
+    <?php if($_SESSION['descripcion'] == "administrador"){?>
     <div>
         <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#mdlregistroproductos" onclick="ListarCateprodProd();">
             <i class="fa fa-plus"></i> Registrar</button>
     </div>
+    <?php } ?>
     <br>
 
     <br>

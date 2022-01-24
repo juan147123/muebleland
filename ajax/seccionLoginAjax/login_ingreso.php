@@ -22,12 +22,19 @@ class LoginAjax
                 }
 
                 if ($respuesta == "ok") {
-                    $response = array(
-                        'response' => 'true'
-                    );
                     $_SESSION['iniciarSesion'] = 'ok';
                     $_SESSION['nombreempleado'] = $informacion[0];
                     $_SESSION['descripcion'] = $informacion[1];
+
+                    if($informacion[1]=="administrador"){
+                        $response = array(
+                            'response' => 'true'
+                        );
+                    }else if($informacion[1]=="ventas"){
+                        $response = array(
+                            'response' => 'ventas'
+                        ); 
+                    }
                 } else {
                     $response = array(
                         'response' => 'error'

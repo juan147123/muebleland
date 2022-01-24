@@ -15,6 +15,8 @@ $(document).ready(function () {
                     window.location = "inicio";
                 } else if ($response == 'error') {
                     swal.fire('Upss!', 'El correo o la contraseña son incorrectos', 'info');
+                }else if($response == 'ventas'){
+                    window.location = "clientes";
                 }
             }
         });
