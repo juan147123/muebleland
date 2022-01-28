@@ -37,10 +37,10 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 	}else if ($_SESSION["descripcion"] == "almacen"){
 		if (isset($_GET['ruta'])) {
 			if (
-				$_GET['ruta'] == "clientes" ||
-				$_GET['ruta'] == "productos"||
-				$_GET['ruta'] == "ordenventa" ||
-				$_GET['ruta'] == "venta" ||
+				$_GET['ruta'] == "colores" ||
+				$_GET['ruta'] == "marcas"||
+				$_GET['ruta'] == "categorias" ||
+				$_GET['ruta'] == "productos" ||
 				$_GET['ruta'] == "salir" 
 			) {
 				require_once 'views/modulos/header.php';

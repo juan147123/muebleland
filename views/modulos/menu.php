@@ -185,10 +185,10 @@
             <div id="sidebar-menu">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-                    <li><a class="fa fa-warehouse" href="colores">Colores</a></li>
-                    <li><a class="fa fa-warehouse" href="marcas">Marcas</a></li>
-                    <li><a class="fa fa-warehouse" href="categorias">Categorias</a></li>
-                    <li><a class="fa fa-warehouse" href="productos">Productos</a></li>
+                    <li><a class="fas fa-tint" href="colores"> Colores</a></li>
+                    <li><a class="fab fa-maxcdn" href="marcas"> Marcas</a></li>
+                    <li><a class="fas fa-dice-d6" href="categorias"> Categorias</a></li>
+                    <li><a class="far fa-list-alt" href="productos"> Productos</a></li>
                 </ul>
             </div>
             <!-- Sidebar -->
