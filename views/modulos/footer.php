@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['ruta'])) {
-    if ($_GET['ruta'] != "login" ){
-        echo('
+  if ($_GET['ruta'] != "login") {
+    echo ('
         <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
@@ -17,7 +17,7 @@ if (isset($_GET['ruta'])) {
             </div>
         </footer>
         ');
-    }
+  }
 }
 ?>
 
@@ -52,6 +52,9 @@ if (isset($_GET['ruta'])) {
 
 <!-- Datatable init js -->
 <script src="views/js/pages/datatables.init.js"></script>
+<!-- Chart JS -->
+<script src="views/libs/chart.js/Chart.bundle.min.js"></script>
+<script src="views/js/pages/chartjs.init.js"></script>
 
 <!-- App js -->
 <script type="text/javascript" src="views/js/api.js"></script>
@@ -76,7 +79,7 @@ if (isset($_GET['ruta'])) {
   $(document).ready(function() {
     $(".listarmodalVentaR").select2({
       dropdownParent: $("#mdlRegistrarVenta"),
-      width:'100%'
+      width: '100%'
     });
   });
 </script>
@@ -86,7 +89,7 @@ if (isset($_GET['ruta'])) {
   $(document).ready(function() {
     $(".listarmodalVentaRES").select2({
       dropdownParent: $("#mdlActualizarVenta"),
-      width:'100%'
+      width: '100%'
     });
   });
 </script>
@@ -96,12 +99,13 @@ if (isset($_GET['ruta'])) {
   $(document).ready(function() {
     $(".listardetallevent").select2({
       dropdownParent: $("#mdlAddDetalleVenta"),
-      width:'100%',
-      height:'100%'
+      width: '100%',
+      height: '100%'
     });
   });
 </script>
 <!--  -->
 
 </body>
+
 </html>

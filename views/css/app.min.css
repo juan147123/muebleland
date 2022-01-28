@@ -75,6 +75,13 @@
 #sidebar-menu ul li a{
     font-weight: bold;
 }
+
+.card{
+    box-shadow: 0 4px 12px 0 rgba(17, 9, 134, 0.2), 0 20px 20px 0 rgba(31, 5, 128, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(7, 13, 105, 0.2), 0 6px 20px 0 rgba(53, 10, 109, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(31, 15, 90, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
 @media(max-width: 700px){
     #contenidologin{
         width: 300px;

@@ -16,7 +16,7 @@ class listarventasajax
             }else if($response[$i]['estado'] =='con detalle'){
                 $response[$i]['estado']=' <div class="badge bg-pill bg-soft-info font-size-12">Con Productos</div>';
                 $response[$i]['detalle'] = '
-                <div >
+                <div>
                 <button type="button" class="btn btn-success btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlAddDetalleVenta" onclick="ListarCodigosProd();btnverdetalleventa('.$response[$i]['id_venta'].');btnMostrarMonto('.$response[$i]['id_venta'].');btnMostrarVenta('.$response[$i]['id_venta'].');"><i class="fas fa-cart-plus"></i></button>
                 <button type="button" class="btn btn-success btn-sm m-0" data-bs-toggle="modal" data-bs-target="#" onclick="actualizarestadovendido('.$response[$i]['id_venta'].');"><i class="fas fa-cash-register"> vender</i></button>
                 </div>';
