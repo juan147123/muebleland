@@ -108,14 +108,14 @@
                                     <input type="text" class="form-control AutofocusInput" id="condicion_pagofc" name="condicion_pagofc" placeholder="Condición de pago" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group">
-                                    <label>Seleccione Imagen:</label>
+                                    <label>Seleccione Archivo:</label>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="card border-primary">
                                         <div class="card-body">
                                             <label for="imagen" id="icon-image" class="btn btn-primary"><i class="fas fa-image"></i></label>
                                             <span id="icon-cerrar"></span>
-                                            <input type="file" name="imagen" id="imagen" class="d-none" onchange="preview(event)">
+                                            <input type="file" name="imagen" id="imagen" class="d-none" onchange="preview(event)" accept="application/pdf">
                                             <img class="img-thumbnail" id="img-preview">
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img class="modal-content" id="img01">
+                    <iframe id="img01" frameborder="0" scrolling="no" width="100%" height="750px"></iframe>
                 </div>
                 <div class="modal-footer">
                     <button id="btnocultarmodal" type="button" class="btn btn-info" data-dismiss="modal" onclick="ocultarimagenfact();">Cerrar Vista Previa</button>
