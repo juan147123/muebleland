@@ -67,6 +67,7 @@ class LoginAjax
                     $response = array(
                         'response' => 'error'
                     );
+                    
                 }
 
                 echo json_encode($response);
