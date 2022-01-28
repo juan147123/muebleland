@@ -139,11 +139,23 @@
                 <ul class="metismenu list-unstyled" id="side-menu">
 
 
-                    <li><a class="fa fa-warehouse" href="colores">Colores</a></li>
-                    <li><a class="fa fa-warehouse" href="marcas">Marcas</a></li>
-                    <li><a class="fa fa-warehouse" href="categorias">Categorias</a></li>
-                    <li><a class="fa fa-warehouse" href="productos">Productos</a></li>
-                   
+                    <li>
+                        <a href="clientes"> <i class="fas fa-users"></i><span>Clientes</span> </a>
+                    </li>
+                    <li>
+                        <a class="fa fa-warehouse"> <span>Almacén</span></a>
+
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="productos">Productos</a></li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="ordenventa"> <i class="fas fa-cash-register"></i><span>Orden de venta</span> </a>
+                    </li>
+                    <li>
+                        <a href="venta"> <i class="fas fa-money-bill-wave"></i><span>Ventas efectuadas</span> </a>
+                    </li>
                 </ul>
             </div>
             <!-- Sidebar -->
@@ -173,23 +185,10 @@
             <div id="sidebar-menu">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-                    <li>
-                        <a href="clientes"> <i class="fas fa-users"></i><span>Clientes</span> </a>
-                    </li>
-                    <li>
-                        <a class="fa fa-warehouse"> <span>Almacén</span></a>
-
-                        <ul class="sub-menu" aria-expanded="true">
-                            <li><a href="productos">Productos</a></li>
-                        </ul>
-
-                    </li>
-                    <li>
-                        <a href="ordenventa"> <i class="fas fa-cash-register"></i><span>Orden de venta</span> </a>
-                    </li>
-                    <li>
-                        <a href="venta"> <i class="fas fa-money-bill-wave"></i><span>Ventas efectuadas</span> </a>
-                    </li>
+                    <li><a class="fa fa-warehouse" href="colores">Colores</a></li>
+                    <li><a class="fa fa-warehouse" href="marcas">Marcas</a></li>
+                    <li><a class="fa fa-warehouse" href="categorias">Categorias</a></li>
+                    <li><a class="fa fa-warehouse" href="productos">Productos</a></li>
                 </ul>
             </div>
             <!-- Sidebar -->

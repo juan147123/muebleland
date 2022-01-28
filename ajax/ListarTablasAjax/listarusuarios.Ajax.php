@@ -14,7 +14,7 @@ class listarusuariosajax
            
             $response[$i]['acciones'] = '
                     <div ">
-                    <button type="button" class="btn btn-primary btn-sm m-0" data-bs-toggle="modal" data-bs-target="#mdlActualizarMarca" onclick="btnEditarMarca();"><i class="fa fa-pencil"></i></button>
+                    
                     <button type="button" data-toggle="modal" data-target="#eliminarModal" class="btn btn-danger btn-sm m-0" onclick="btnEliminarUsuario('.$response[$i]['id_usuario'].');"><i class="fa fa-trash"></i></button>
                     </div>';
         }

@@ -17,6 +17,8 @@ $(document).ready(function () {
                     swal.fire('Upss!', 'El correo o la contraseña son incorrectos', 'info');
                 }else if($response == 'ventas'){
                     window.location = "clientes";
+                }else if($response == 'almacen'){
+                    window.location = "productos";
                 }
             }
         });

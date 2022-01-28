@@ -41,6 +41,10 @@ class LoginAjax
                             $response = array(
                                 'response' => 'ventas'
                             );
+                        }else if ($informacion[1] == "almacen") {
+                            $response = array(
+                                'response' => 'almacen'
+                            );
                         }
                     } else {
                         $response = array(
