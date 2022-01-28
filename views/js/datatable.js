@@ -362,6 +362,39 @@ $(document).ready(function () {
         });
     }).draw();
 
+    tblUsuarios = $('#Listarusuarios').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+        },
+        ajax: {
+            url: "ajax/ListarTablasAjax/listarusuarios.Ajax.php",
+            dataSrc: ''
+        },
+        responsive: true,
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 },
+        ],
+        columns: [
+            {
+                "orderable": false,
+                "data": null,
+                "defaultContent": ''
+            },
+            { 'data': 'nombres_trab' },
+            { 'data': 'descripcion' },
+            { 'data': 'correo_usuario' },
+            { 'data': 'fecha_registro' },
+            { 'data': 'acciones' }
+        ],
+        "order": [[1, 'asc']]
+    });
+    tblUsuarios.on('order.dt search.dt', function () {
+        tblUsuarios.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
 });
 function btnverdetallefacturaCompra(id) {
     btnMostraridfacturaalmacenado(id)
@@ -455,5 +488,7 @@ function btnverdetallefacturaCompra2(id) {
             cell.innerHTML = i + 1;
         });
     }).draw();
+
+    
 
 }

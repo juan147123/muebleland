@@ -7,6 +7,7 @@ require_once '../../controller/colores_controller.php';
 require_once '../../controller/marcas_controller.php';
 require_once '../../controller/categorias_controller.php';
 require_once '../../controller/ventas_controller.php';
+require_once '../../controller/usuarios_controller.php';
 
 
 require_once '../../model/empleado_model.php';
@@ -17,6 +18,7 @@ require_once '../../model/colores_model.php';
 require_once '../../model/marcas_model.php';
 require_once '../../model/categorias_model.php';
 require_once '../../model/ventas_model.php';
+require_once '../../model/usuarios_model.php';
 
 
 class mostrarporidajax

@@ -16,4 +16,9 @@ class loginmodelo{
         $stmt->execute();
         return  $stmt->fetch(PDO::FETCH_OBJ);
     }
+    static public function obtenercontrasena($correo){
+        $stmt = Conexion::conectar()->prepare("CALL SP_BuscarContra ('$correo')");
+        $stmt->execute();
+        return  $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }

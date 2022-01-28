@@ -2,7 +2,7 @@
 session_start();
 include '../../controller/login_controller.php';
 include '../../model/login_model.php';
-
+require_once "../../extensiones/encriptacion.php";
 class LoginAjax
 {
     public function validar()
@@ -12,34 +12,48 @@ class LoginAjax
 
                 $usuario = $_POST['usuario'];
                 $contrasena = $_POST['contrasena'];
-                $respuesta = usuariocontrolador::ctringresoempleado($usuario, $contrasena);
-                $datosbd = loginmodelo::obtenerdatos($usuario, $contrasena);
-                $informacion = [];
-                if (is_array($datosbd) || is_object($datosbd)) {
-                    foreach ($datosbd as $datos) {
-                        array_push($informacion, $datos);
+                $resultadocontra = usuariocontrolador::ctrobtenercontrasena($usuario);
+                $datoscontra = [];
+                foreach ($resultadocontra as $row) {
+                    array_push($datoscontra, $row);
+                }
+                $datacontra = Encriptacion::decryption($datoscontra[0]);
+                if ($contrasena == $datacontra) {
+                    $respuesta = usuariocontrolador::ctringresoempleado($usuario, $datoscontra[0]);
+                    $datosbd = loginmodelo::obtenerdatos($usuario, $datoscontra[0]);
+                    $informacion = [];
+                    if (is_array($datosbd) || is_object($datosbd)) {
+                        foreach ($datosbd as $datos) {
+                            array_push($informacion, $datos);
+                        }
+                    }
+
+                    if ($respuesta == "ok") {
+                        $_SESSION['iniciarSesion'] = 'ok';
+                        $_SESSION['nombreempleado'] = $informacion[0];
+                        $_SESSION['descripcion'] = $informacion[1];
+
+                        if ($informacion[1] == "administrador") {
+                            $response = array(
+                                'response' => 'true'
+                            );
+                        } else if ($informacion[1] == "ventas") {
+                            $response = array(
+                                'response' => 'ventas'
+                            );
+                        }
+                    } else {
+                        $response = array(
+                            'response' => 'error'
+                        );
                     }
                 }
-
-                if ($respuesta == "ok") {
-                    $_SESSION['iniciarSesion'] = 'ok';
-                    $_SESSION['nombreempleado'] = $informacion[0];
-                    $_SESSION['descripcion'] = $informacion[1];
-
-                    if($informacion[1]=="administrador"){
-                        $response = array(
-                            'response' => 'true'
-                        );
-                    }else if($informacion[1]=="ventas"){
-                        $response = array(
-                            'response' => 'ventas'
-                        ); 
-                    }
-                } else {
+                else{
                     $response = array(
                         'response' => 'error'
                     );
                 }
+
                 echo json_encode($response);
             }
         }

@@ -105,6 +105,9 @@
                         </ul>
 
                     </li>
+                    <li>
+                        <a href="usuarios"> <i class="fas fa-user"></i><span>Usuarios</span> </a>
+                    </li>
 
                 </ul>
             </div>

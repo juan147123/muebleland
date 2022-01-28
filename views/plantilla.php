@@ -50,6 +50,7 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 				$_GET['ruta'] == "ordenventa" ||
 				$_GET['ruta'] == "venta" ||
 				$_GET['ruta'] == "facturacompra" ||
+				$_GET['ruta'] == "usuarios" ||
 				$_GET['ruta'] == "salir" 
 			) {
 				require_once 'views/modulos/header.php';
