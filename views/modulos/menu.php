@@ -117,12 +117,48 @@
     <div class="vertical-menu">
         <!-- LOGO -->
         <div class="navbar-brand-box">
-            <a href="inicio" class="logo logo-dark"> <span class="logo-sm">
+            <a href="" class="logo logo-dark"> <span class="logo-sm">
                     <img src="views/images/logo-sm.png" alt="" height="22">
                 </span> <span class="logo-lg">
                     <img src="views/images/mueblelandinicio.png" alt="" height="20">
                 </span> </a>
-            <a href="inicio" class="logo logo-light"> <span class="logo-sm">
+            <a href="" class="logo logo-light"> <span class="logo-sm">
+                    <img src="views/images/logo-sm.png" alt="" height="22">
+                </span> <span class="logo-lg">
+                    <img src="views/images/logo-light.png" alt="" height="20">
+                </span> </a>
+        </div>
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn"> <i class="fa fa-fw fa-bars"></i> </button>
+        <div data-simplebar class="sidebar-menu-scroll">
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+
+
+                    <li><a class="fa fa-warehouse" href="colores">Colores</a></li>
+                    <li><a class="fa fa-warehouse" href="marcas">Marcas</a></li>
+                    <li><a class="fa fa-warehouse" href="categorias">Categorias</a></li>
+                    <li><a class="fa fa-warehouse" href="productos">Productos</a></li>
+                   
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+    </div>
+<?php } ?>
+
+
+<?php if ($_SESSION['descripcion'] == "almacen") { ?>
+    <div class="vertical-menu">
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+            <a href="" class="logo logo-dark"> <span class="logo-sm">
+                    <img src="views/images/logo-sm.png" alt="" height="22">
+                </span> <span class="logo-lg">
+                    <img src="views/images/mueblelandinicio.png" alt="" height="20">
+                </span> </a>
+            <a href="" class="logo logo-light"> <span class="logo-sm">
                     <img src="views/images/logo-sm.png" alt="" height="22">
                 </span> <span class="logo-lg">
                     <img src="views/images/logo-light.png" alt="" height="20">
