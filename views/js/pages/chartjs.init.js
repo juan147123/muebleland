@@ -131,7 +131,7 @@ $(document).ready(function () {
       if (maximaventa <= 130) {
         maximaventa = maximaventa ;
       } else {
-        maximaventa = maximaventa ;
+        maximaventa = maximaventa +100;
       }
       var ctx = document.getElementById("bar");
       new Chart(ctx, {
