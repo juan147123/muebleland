@@ -3,3 +3,4 @@ Options All -Indexes
 RewriteEngine On 
 
 RewriteRule ^([-a-zA-Z0-9]+)$ index.php?ruta=$1
+php_flag output_buffering
