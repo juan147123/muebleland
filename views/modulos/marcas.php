@@ -57,7 +57,7 @@
                                     <label>Nombre de la marca:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" required>
+                                    <input type="text" class="form-control AutofocusInput" id="descripcion" name="descripcion" pattern="[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+" placeholder="Ingrese descripcion" required>
                                 </div>
                             </div>
                             

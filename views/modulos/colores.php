@@ -57,7 +57,7 @@
                                     <label>Nombre del color:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="nombre_color" name="nombre_color" placeholder="Ingrese color" required>
+                                    <input type="text" class="form-control AutofocusInput" id="nombre_color" name="nombre_color" pattern="[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+" placeholder="Ingrese color" required>
                                 </div>
                             </div>
                             
