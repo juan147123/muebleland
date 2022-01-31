@@ -27,7 +27,7 @@ class proveedorcontroller
 
     static public function ctrEliminarProveedor_x_ID($NITProveedor)
     {
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM proveedor pr inner join producto p on pr.NITProveedor=p.NITProveedor  WHERE pr.NITProveedor='$NITProveedor';");
+        $stmt = Conexion::conectar()->prepare("SELECT * from proveedor p inner join factura_compra f on p.NITProveedor=f.idprov WHERE p.NITProveedor=$NITProveedor;");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
 
