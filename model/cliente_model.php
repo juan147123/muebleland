@@ -21,8 +21,8 @@ class ClienteModelo{
             return 'repeat';
         }
 
-        $stmt = Conexion::conectar()->prepare("CALL SP_Registrarcliente (?, ?, ?, ?, ?, ?);");
-        $respuesta = $stmt->execute([$datos['NIT'], $datos['NombreCompleto'], $datos['Apellido'], $datos['Direccion'], $datos['Telefono'], $datos['Email']]);
+        $stmt = Conexion::conectar()->prepare("CALL SP_Registrarcliente (?, ?, ?, ?, ?);");
+        $respuesta = $stmt->execute([$datos['NIT'], $datos['NombreCompleto'], $datos['Direccion'], $datos['Telefono'], $datos['Email']]);
 
         if ($respuesta == true) {
             return "ok";
@@ -42,8 +42,8 @@ class ClienteModelo{
     }
     static public function mdlActualizarCliente($datos)
     {
-        $stmt = Conexion::conectar()->prepare("CALL SP_Actualizarcliente(?, ?, ?, ? , ?, ?);");
-        $stmt->execute([$datos['NombreCompleto'], $datos['Apellido'], $datos['Direccion'], $datos['Telefono'], $datos['Email'],$datos['NIT']]);
+        $stmt = Conexion::conectar()->prepare("CALL SP_Actualizarcliente(?, ?, ?, ? , ?);");
+        $stmt->execute([$datos['NombreCompleto'], $datos['Direccion'], $datos['Telefono'], $datos['Email'],$datos['NIT']]);
         if ($stmt == true) {
             return "ok";
         } else {

@@ -4,10 +4,9 @@ require_once '../../model/cliente_model.php';
 
 class actualizarcliente{
     public function ajaxactualizarCliente(){
-        if ($_POST['NITEditar'] != null && $_POST['EmailEditar'] != null && $_POST['TelefonoEditar'] != null && $_POST['DireccionEditar'] != null && $_POST['ApellidoEditar'] != null && $_POST['NombreCompletoEditar'] != null ) {
+        if ($_POST['NITEditar'] != null && $_POST['EmailEditar'] != null && $_POST['TelefonoEditar'] != null && $_POST['DireccionEditar'] != null && $_POST['NombreCompletoEditar'] != null ) {
             $datos = array(
                 "NombreCompleto" => $_POST['NombreCompletoEditar'],
-                "Apellido" => $_POST['ApellidoEditar'],
                 "Direccion" => $_POST['DireccionEditar'],
                 "Telefono" => $_POST['TelefonoEditar'],
                 "Email" => $_POST['EmailEditar'],

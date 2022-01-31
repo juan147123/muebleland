@@ -39,7 +39,6 @@ function btnEditarCliente(NIT) {
         $data = respuesta;
         $('#NITEditar').val($data['NIT']);
         $('#NombreCompletoEditar').val($data['NombreCompleto']);
-        $('#ApellidoEditar').val($data['Apellido']);
         $('#DireccionEditar').val($data['Direccion']);
         $('#TelefonoEditar').val($data['Telefono']);
         $('#EmailEditar').val($data['Email']);
@@ -111,4 +110,90 @@ function btnEliminarCliente(NIT) {
         }
     })
 }
+
+
+$('#tipo_documentocli').on('change', function () {
+    let dataenviada = $('#tipo_documentocli option:selected').val();
+    document.getElementById("NombreCompleto").value = "";
+    document.getElementById("Direccion").value = "";
+    document.getElementById("NIT").value = "";
+    $("#enviarruc").attr("hidden", true);
+    $("#enviardni").attr("hidden", true);
+    const btnenviardoctransporte = $("#enviarruc")
+    const btnenviardoctransportedni = $("#enviardni")
+    const valordoctransporte = document.getElementById("NIT");
+    if (dataenviada == "ruc") {
+        document.getElementById("NombreCompleto").value = "";
+        document.getElementById("NIT").value = "";
+        $("#enviarruc").attr("hidden", false);
+        $("#enviardni").attr("hidden", true);
+
+        btnenviardoctransporte.on("click", function () {
+            $("#NombreCompleto").val(null);
+            $("#Direccion").val(null);
+            if (valordoctransporte.value.length == 11) {
+                $.ajax({
+                    type: "POST",
+                    url: "extensiones/extencion_api.php",
+                    data: "ruc=" + valordoctransporte.value,
+                    dataType: 'json',
+                }).done(function (respuesta) {
+                    stop();
+                    if (respuesta.respuesta == "error") {
+                        swal.fire('Upss!', 'Hubo un error al consultar el ruc', 'info');
+                    } else if (respuesta.success == true) {
+                        $("#NombreCompleto").val(respuesta.nombre_o_razon_social)
+                        $("#Direccion").val(respuesta.direccion_completa)
+
+                    }
+                    else {
+                        swal.fire('Upss!', 'Hubo un error garrafal al buscar el ruc', 'danger');
+                    }
+                });
+            }
+            else if (valordoctransporte.value.length != 11) {
+                swal.fire('Upss!', 'La longitud debe ser 11', 'info');
+            } else {
+                valordoctransporte.setAttribute("required", "Rellene este campo");
+            }
+        });
+    } else if (dataenviada == "dni") {
+        document.getElementById("NombreCompleto").value = "";
+        document.getElementById("Direccion").value = "";
+        document.getElementById("NIT").value = "";
+        $("#enviarruc").attr("hidden", true);
+        $("#enviardni").attr("hidden", false);
+        btnenviardoctransportedni.on("click", function () {
+            $("#NombreCompleto").val(null);
+            $("#Direccion").val(null);
+            if (valordoctransporte.value.length == 8) {
+                $.ajax({
+                    type: "POST",
+                    url: "extensiones/extencion_api.php",
+                    data: "dni=" + valordoctransporte.value,
+                    dataType: 'json',
+                }).done(function (respuesta) {
+                    stop();
+                    if (respuesta.respuesta == "error") {
+                        swal.fire('Upss!', 'Hubo un error al consultar el DNI', 'info');
+                    } else if (respuesta) {
+                        $("#NombreCompleto").val(respuesta.nombre)
+                    } else {
+                        alert("error garrafal")
+                    }
+                });
+            }
+            else if (valordoctransporte.value.length != 8) {
+                swal.fire('Upss!', 'La longitud debe ser 8', 'info');
+            } else {
+                valordoctransporte.setAttribute("required", "Rellene este campo");
+            }
+        });
+    } else {
+        document.getElementById("NombreCompleto").value = "";
+        document.getElementById("NIT").value = "";
+        $("#enviarruc").attr("hidden", true);
+        $("#enviardni").attr("hidden", true);
+    }
+});
 

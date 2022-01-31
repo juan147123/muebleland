@@ -100,7 +100,6 @@ $(document).ready(function () {
             },
             { 'data': 'NIT' },
             { 'data': 'NombreCompleto' },
-            { 'data': 'Apellido' },
             { 'data': 'Direccion' },
             { 'data': 'Telefono' },
             { 'data': 'Email' },
