@@ -91,8 +91,8 @@
                                     <label>Nombre de la Marca:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="descripcionEditar" name="descripcionEditar" placeholder="Ingrese descripcion" required>
-                                    <input type="hidden" class="form-control AutofocusInput" id="id_marcaEditar" name="id_marcaEditar" placeholder="Ingrese id" required>
+                                    <input type="text" class="form-control " id="descripcionEditar" name="descripcionEditar" pattern="[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]+" placeholder="Ingrese descripcion"  required>
+                                    <input type="hidden" class="form-control " id="id_marcaEditar" name="id_marcaEditar" placeholder="Ingrese id" required>
                                 </div>
                             </div>
                             
