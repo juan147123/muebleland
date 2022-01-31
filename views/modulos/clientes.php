@@ -67,7 +67,7 @@
                                     <label>DOCUMENTO:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="NIT" name="NIT" placeholder="N° de DOC." required>
+                                    <input type="number" class="form-control AutofocusInput" id="NIT" name="NIT" placeholder="N° de DOC." required>
                                     <button type="button" class="btn btn-success" id="enviarruc" hidden><i class="fas fa-search"></i></button>
                                     <button type="button" class="btn btn-success" id="enviardni" hidden><i class="fas fa-search"></i></button>
 
