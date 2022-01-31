@@ -25,7 +25,6 @@ class usuariomodelo{
          $consulta->execute([$datos['correo_usuario']]);
         $result = $consulta->fetch(PDO::FETCH_OBJ);
         if (!empty($result)) {
-
             return 'repeat';
         } 
 

@@ -65,7 +65,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="selectcargo" class="form-label">Cargo trabajador</label>
-                        <select id="selectcargo" name="selectcargo" class="form-control">
+                        <select id="selectcargo" name="selectcargo" class="form-control" required>
                             <option value="">Seleccionar tipo cargo</option>
                             <?php
                             $data = usuarioscontroller::ctrListarCargos();
@@ -85,13 +85,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" id="pass" name="pass" minlength="8" autocomplete="off" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" pattern="[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]+" required>
+                        <input type="password" class="form-control" id="pass" name="pass" minlength="8" autocomplete="off" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1"  required>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" id="passconfirmar" name="passconfirmar" minlength="8" autocomplete="off" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" pattern="[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]+">
+                        <input type="password" class="form-control" id="passconfirmar" name="passconfirmar" minlength="8" autocomplete="off" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1"  required>
                     </div>
                     <div class="text-center" style="color:red;" id="valpassuser" hidden="true">
                         <strong>Las contraseñas deben ser iguales</strong>

@@ -12,7 +12,7 @@ function ListarClientesVentas() {
            `);
             for (let i = 0; i < e.length; i++) {
                 selectvntcli.append(`
-                   <option value="${e[i].NIT}">${e[i].NIT} - ${e[i].NombreCompleto} ${e[i].Apellido} </option>
+                   <option value="${e[i].NIT}">${e[i].NIT} - ${e[i].NombreCompleto} </option>
                `);
             }
         }
