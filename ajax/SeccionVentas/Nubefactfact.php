@@ -43,35 +43,29 @@ class controladornubefact
                     $totalgravado += $row['subtotal'];
                 }
                 /* quia de remsion */
-                $guiaremision = [];
-                $guia = array(
-                    "guia_tipo" => "1",
-                    "guia_serie_numero" => "TTT1-" . strval($id_venta)
-                );
-                array_push($guiaremision, $guia);
                 /* ------------asiganr valores---------- */
-                $tipocomprob=0;
-                $serie="";
-                $tipodocumento="";
-                $formato="";
-                $valorcompro=$cliente[0]['tipo_compro'];
-                $doccliente=strlen($cliente[0]['NIT']);
+                $tipocomprob = 0;
+                $serie = "";
+                $tipodocumento = "";
+                $formato = "";
+                $valorcompro = $cliente[0]['tipo_compro'];
+                $doccliente = strlen($cliente[0]['NIT']);
 
 
-                if($valorcompro=="Factura"){
+                if ($valorcompro == "Factura") {
                     $tipocomprob = 1;
-                    $serie="FFF1";
-                    $formato="A4";
-                }else{
+                    $serie = "FFF1";
+                    $formato = "A4";
+                } else {
                     $tipocomprob = 2;
-                    $serie="BBB1";
-                    $formato="TICKET";
+                    $serie = "BBB1";
+                    $formato = "TICKET";
                 }
 
-                if($doccliente==11){
-                    $tipodocumento="6";
-                }else{
-                    $tipodocumento="1";
+                if ($doccliente == 11) {
+                    $tipodocumento = "6";
+                } else {
+                    $tipodocumento = "1";
                 }
 
 
@@ -127,8 +121,7 @@ class controladornubefact
                     "orden_compra_servicio"             => "",
                     "tabla_personalizada_codigo"        => "",
                     "formato_de_pdf"                    => $formato,
-                    "items" => $arrayproductos,
-                    "guias" => $guiaremision
+                    "items" => $arrayproductos
                 );
                 $data_json = json_encode($data);
 
@@ -156,8 +149,8 @@ class controladornubefact
                     //
                     //no hacemos nada, hubo error, dejamos que finalice
                 } else {
-                    $ruta= strval($leer_respuesta['enlace']);
-                    $responseactivatebill = ventascontrolador::ctrActivateBillStateafterValidateResponse($id_venta,$ruta);
+                    $ruta = strval($leer_respuesta['enlace']);
+                    $responseactivatebill = ventascontrolador::ctrActivateBillStateafterValidateResponse($id_venta, $ruta);
                     if ($responseactivatebill == 'error') {
                         // $leer_respuesta = array("errors" => "Ocurrió un error en la Base de Datos","codigo"=>"IEDB");          
                         //ANULANDO FACTURA ENVIADA A NUBEFACT
@@ -197,7 +190,7 @@ class controladornubefact
             } else {
                 $leer_respuesta = array("errors" => "Sin elementos", "codigo" => "NEF");
             }
-        }else {
+        } else {
             $leer_respuesta = array("errors" => "No se detectó un identificador para la orden de venta.", "codigo" => "NOID");
         }
         echo json_encode($leer_respuesta);

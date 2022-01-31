@@ -20,7 +20,6 @@
                                 <th>#</th>
                                 <th>Documento</th>
                                 <th>Nombres</th>
-                                <th>Apellidos</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
                                 <th>Correo</th>
@@ -52,28 +51,37 @@
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
                                 <div class="input-group">
-                                    <label>DOCUMENTO:</label>
+                                    <label>TIPO DE DOCUMENTO</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="NIT" name="NIT" placeholder="Ingrese su N° de DOC." required>
+                                    <select class="form-select" id="tipo_documentocli" name="tipo_documentocli" required>
+                                        <option value="">Seleccione</option>
+                                        <option value="ruc">RUC</option>
+                                        <option value="dni">DNI</option>
+                                    </select>
+
                                 </div>
                             </div>
                             <div class="col-md-6 col-xs-6">
                                 <div class="input-group">
-                                    <label>NOMBRES:</label>
+                                    <label>DOCUMENTO:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="NombreCompleto" name="NombreCompleto" placeholder="Ingrese sus nombres" pattern="[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+" required>
+                                    <input type="text" class="form-control AutofocusInput" id="NIT" name="NIT" placeholder="N° de DOC." required>
+                                    <button type="button" class="btn btn-success" id="enviarruc" hidden><i class="fas fa-search"></i></button>
+                                    <button type="button" class="btn btn-success" id="enviardni" hidden><i class="fas fa-search"></i></button>
+
                                 </div>
                             </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
                                 <div class="input-group">
-                                    <label>APELLIDOS:</label>
+                                    <label>RAZON SOCIAL / NOMBRE:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Ingrese sus apellidos" pattern="[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+" required>
+                                    <input type="text" class="form-control" id="NombreCompleto" name="NombreCompleto" placeholder="RAZON SOCIAL / NOMBRE" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xs-6">
@@ -129,27 +137,15 @@
                 <form class="form" id="frmActualizarCliente" method="post" action="ajax/SeccionCliente/actualizarcliente.php">
                     <div class="modal-body">
                         <div class="row">
-
-                            <div class="col-md-6 col-xs-6">
-                                <div class="input-group">
-                                    <label>NOMBRES:</label>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input type="hidden" class="form-control AutofocusInput" id="NITEditar" name="NITEditar" placeholder="Ingrese su N° de DOC." required>
-                                    <input type="text" class="form-control" id="NombreCompletoEditar" name="NombreCompletoEditar" placeholder="Ingrese sus nombres" pattern="[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+" required>
-                                </div>
+                            <div class="input-group">
+                                <label>RAZON SOCIAL / NOMBRE:</label>
                             </div>
-                            <div class="col-md-6 col-xs-6">
-                                <div class="input-group">
-                                    <label>APELLIDOS:</label>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="ApellidoEditar" name="ApellidoEditar" placeholder="Ingrese sus apellidos" pattern="[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+" required>
-                                </div>
+                            <div class="input-group mb-3">
+                                <input type="hidden" class="form-control AutofocusInput" id="NITEditar" name="NITEditar" placeholder="Ingrese su N° de DOC." required>
+                                <input type="text" class="form-control" id="NombreCompletoEditar" name="NombreCompletoEditar" placeholder="RAZON SOCIAL / NOMBRE" required>
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-md-6 col-xs-6">
                                 <div class="input-group">
                                     <label>DIRECCIÓN:</label>

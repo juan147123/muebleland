@@ -4,7 +4,7 @@ class ControladorApi
     static public function ctrConsultarRuc($ruc)
     {
         $ruta = "https://ruc.com.pe/api/v1/consultas";
-        $token = "df400896-852d-48cf-8257-fcd714f1138c-bb3686c1-2265-4e7e-acf0-0222bd6ce4fa";
+        $token = "a7fa4517-62bc-40e5-be08-761a538f8080-26d44d60-d96b-47fc-aa2c-c156d31e2c3f";
         $rucaconsultar = $ruc;
         $data = array(
             "token"    => $token,
