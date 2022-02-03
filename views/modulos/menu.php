@@ -189,6 +189,7 @@
                     <li><a class="fab fa-maxcdn" href="marcas"> Marcas</a></li>
                     <li><a class="fas fa-dice-d6" href="categorias"> Categorias</a></li>
                     <li><a class="far fa-list-alt" href="productos"> Productos</a></li>
+                    <li><a class="far fa-list-alt" href="facturacompra">Factura de Compra</a></li>
                 </ul>
             </div>
             <!-- Sidebar -->
