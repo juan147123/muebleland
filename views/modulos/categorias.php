@@ -57,7 +57,7 @@
                                     <label>Nombre de la categoria:</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control AutofocusInput" id="Descripcion" name="Descripcion" placeholder="Ingrese descripcion" required>
+                                    <input type="text"  class="form-control" id="Descripcion" name="Descripcion" placeholder="Ingrese descripcion"  pattern="[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]+"  required>
                                 </div>
                             </div>
                             
