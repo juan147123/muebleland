@@ -4,7 +4,7 @@ class ControladorApi
     static public function ctrConsultarRuc($ruc)
     {
         $ruta = "https://ruc.com.pe/api/v1/consultas";
-        $token = "a7fa4517-62bc-40e5-be08-761a538f8080-26d44d60-d96b-47fc-aa2c-c156d31e2c3f";
+        $token = "aqui va el token que te generan";
         $rucaconsultar = $ruc;
         $data = array(
             "token"    => $token,
@@ -43,7 +43,7 @@ class ControladorApi
     static public function ctrConsultarDNI($dni)
     {
    
-        $token = 'apis-token-1.aTSI1U7KEuT-6bbbCguH-4Y8TI6KS73N';
+        $token = 'aqui va el token que te generan';
         $dniaconsultar = $dni;
 
         // Iniciar llamada a API

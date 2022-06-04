@@ -12,8 +12,8 @@ class controladornubefact
             $arrayproductos = [];
             if (count($productosvnt) > 0) {
                 $cliente = ventascontrolador::ctrfacturacionNubefactdatoscliente($id_venta);
-                $ruta = "https://api.nubefact.com/api/v1/2228ec63-65e3-4122-8cd3-bbbda9785b1c";
-                $token = "134b5cf2888a439e9c8e69e84f341806df8a34d9fa6d415383a6d19d5e5d0faa";
+                $ruta = "aqui va tu ruta de nubefact";
+                $token = "aqui va tu token de nubefact";
                 $totaligv = 0;
                 $totaltotal = 0;
                 $totalgravado = 0;
